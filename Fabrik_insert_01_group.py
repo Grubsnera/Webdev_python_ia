@@ -74,7 +74,7 @@ params
 NOW(),
 %CREATED_BY%,
 "Python",
-'{"access":"1"}'
+'{\"access\":\"1\"}'
 """ + ");"
 #print(s_sql)
 s_sql = s_sql.replace("%LABEL%",s_label)

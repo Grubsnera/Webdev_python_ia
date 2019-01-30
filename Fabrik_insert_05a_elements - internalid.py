@@ -106,7 +106,7 @@ NOW(),
 1,
 1,
 '{
-"inc_in_adv_search":"0"
+\"inc_in_adv_search\":\"0\"
 }'
 """ + ");"
 #print(s_sql)

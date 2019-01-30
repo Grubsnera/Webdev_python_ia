@@ -87,8 +87,8 @@ NOW(),
 "bootstrap",
 1,
 '{
-"goback_button":"1",
-"submit_on_enter":"1"
+\"goback_button\":\"1\",
+\"submit_on_enter\":\"1\"
 }'
 """ + ");"
 #print(s_sql)

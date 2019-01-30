@@ -115,14 +115,16 @@ NOW(),
 '[""]',
 '["ASC"]',
 "onchange",
-'{"showall-records":"1",
-"show-total":"1",
-"bootstrap_condensed_class":"1",
-"allow_view_details":"9",
-"allow_edit_details":"9",
-"allow_add":"10",
-"allow_delete":"10",
-"allow_drop":"6"}'
+'{
+\"showall-records\":\"1\",
+\"show-total\":\"1\",
+\"bootstrap_condensed_class\":\"1\",
+\"allow_view_details\":\"9\",
+\"allow_edit_details\":\"9\",
+\"allow_add\":\"10\",
+\"allow_delete\":\"10\",
+\"allow_drop\":\"6\"
+}'
 """ + ");"
 #print(s_sql)
 s_sql = s_sql.replace("%LABEL%",s_label)
