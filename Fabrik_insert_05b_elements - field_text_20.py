@@ -104,10 +104,10 @@ NOW(),
 1,
 1,
 '{
-"maxlength":"20",
-"bootstrap_class":"input-large",
-"can_order":"0",
-"inc_in_adv_search":"0"
+\"maxlength\":\"20\",
+\"bootstrap_class\":\"input-large\",
+\"can_order\":\"0\",
+\"inc_in_adv_search\":\"0\"
 }'
 """ + ");"
 s_sql = s_sql.replace("%NAME%",s_name)
