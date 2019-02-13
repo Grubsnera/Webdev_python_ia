@@ -29,6 +29,7 @@ import funcfile
 import funcmysql
 
 # Declare variables
+sd_database = "Web_ia_joomla"
 sd_group = 0
 sd_form = 0
 s_sql = ""
@@ -44,7 +45,6 @@ funcfile.writelog("------------------------------------------")
 
 # Input the joomla mysql fabrik DATABASE name
 s_database = ""
-sd_database = "Web_ia_joomla"
 print("")
 print("Default:"+sd_database)
 #s_database = input("Fabrik DATABASE name? ")
