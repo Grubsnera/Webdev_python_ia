@@ -1,10 +1,12 @@
-"""
+"""*****************************************************************************
 Script to INSERT Joomla Fabrik group and form record
 Copyright (C) AB Janse van Rensburg 2018-10-28
-"""
+*****************************************************************************"""
 
-""" FABRIK SETUP STEPS
-INSERT GROUP STEP 1 (create fabrik group and obtain group number)
+""" FABRIK SETUP STEPS *********************************************************
+ENVIRONMENT
+OPEN THE DATABASE
+CREATE GROUP STEP 1 (create fabrik group and obtain group number)
 INSERT FORM STEP 2 (create fabrik form and obtain form number)
 INSERT FORMGROUP STEP 3 (create fabrik form group combination)
 INSERT LIST STEP 4 (create fabrik list)
@@ -13,22 +15,27 @@ INSERT ELEMENT CREATEDATE STEP 6 (create fabrik element createdate)
 INSERT ELEMENT CREATEBY STEP 7 (create fabrik element createby)
 INSERT ELEMENT CREATEDATE STEP 8 (create fabrik element editdate)
 INSERT ELEMENT EDITBY STEP 9 (create fabrik element editby)
-"""
+*****************************************************************************"""
 
-# Import system objects
+"""*****************************************************************************
+ENVIRONMENT
+*****************************************************************************"""
+print("ENVIRONMENT")
+
+# IMPORT SYSTEM OBJECTS
 import sys
 
-# Add own module path
+# DECLARE OWN MODULE PATH
 sys.path.append('S:/_my_modules')
 
-# Import python objects
+# IMPORT PYTHON OBJECTS
 import pyodbc
 
-# Define Functions
+# IMPORT FUNCTION FILES
 import funcfile
 import funcmysql
 
-# Declare variables
+# DECLARE VARIABLES
 sd_database = "Web_ia_joomla"
 sd_group = 0
 sd_form = 0
@@ -38,12 +45,18 @@ s_created_by = "854"
 print("FABRIK BUILD BASIC TABLE SETUP")
 print("------------------------------")
 
-# Script log file
+# OPEN THE SCRIPTE LOG FILE
 funcfile.writelog("Now")
 funcfile.writelog("SCRIPT: FABRIK BUILD BASIC TABLE STRUCTURE")
 funcfile.writelog("------------------------------------------")
 
-# Input the joomla mysql fabrik DATABASE name
+"""*****************************************************************************
+OPEN THE DATABASE
+*****************************************************************************"""
+print("OPEN THE DATABASE")
+funcfile.writelog("OPEN THE DATABASE ")
+
+# SET THE JOOMLA MYSQL FABRIK DATABASE NAME
 s_database = ""
 print("")
 print("Default:"+sd_database)
@@ -51,15 +64,19 @@ print("Default:"+sd_database)
 if s_database == "":
     s_database = sd_database
 
-# Connect to the oracle database
+# OPEN THE DATABASE
 cnxn = funcmysql.mysql_open(s_database)
 curs = cnxn.cursor()
+print("Database opened "+s_database)
 funcfile.writelog("%t OPEN DATABASE: " + s_database)
 
-""" INSERT GROUP STEP 1 (create fabrik group and obtain group number)
+"""*****************************************************************************
+CREATE GROUP STEP 1 (create fabrik group and obtain group number)
 *****************************************************************************"""
+print("CREATE GROUP")
+funcfile.writelog("CREATE GROUP)
 
-# Input the joomla mysql fabrik TABLE name
+# SET THE JOOMLA MYSQL FABRIK TABLE NAME
 s_table = ""
 sd_table = "ianwu_fabrik_groups"
 print("")
@@ -68,7 +85,7 @@ print("Default:"+sd_table)
 if s_table == "":
     s_table = sd_table
 
-# Input the joomla mysql fabrik GROUP label
+# SET THE JOOMLA MYSQL FABRIK GROUP LABEL
 s_label = ""
 sd_label = "New GROUP to setup"
 print("")
@@ -78,23 +95,61 @@ if s_label == "":
     s_label = sd_label
 print("")
 
-# Add a GROUP record
-s_sql = "INSERT INTO " + s_table + "(" + """
-name,
-label,
-published,
-created,
-created_by,
-created_by_alias,
-params
+# ADD THE GROUP RECORD
+s_sql = "INSERT INTO `" + s_table + "` (" + """
+`name`,
+`css`,
+`label`,
+`published`,
+`created`,
+`created_by`,
+`created_by_alias`,
+`modified`,
+`modified_by`,
+`checked_out`,
+`checked_out_time`,
+`is_join`,
+`private`,
+`params`
 """ + ") VALUES (" + """
-"%LABEL%",
-"Add / Edit %LABEL%",
+'%LABEL%',
+'',
+'Add/Edit %LABEL%',
 1,
 NOW(),
 %CREATED_BY%,
-"Python",
-'{"access":"1"}'
+'Python',
+'0000-00-00 00:00:00',
+0,
+0,
+'0000-00-00 00:00:00',
+0,
+0,
+'{
+\"split_page\":\"0\",
+\"list_view_and_query\":\"1\",
+\"access\":\"1\",
+\"intro\":\"\",
+\"outro\":\"\",
+\"repeat_group_button\":\"0\",
+\"repeat_template\":\"repeatgroup\",
+\"repeat_max\":\"\",
+\"repeat_min\":\"\",
+\"repeat_num_element\":\"\",
+\"repeat_error_message\":\"\",
+\"repeat_no_data_message\":\"\",
+\"repeat_intro\":\"\",
+\"repeat_add_access\":\"1\",
+\"repeat_delete_access\":\"1\",
+\"repeat_delete_access_user\":\"\",
+\"repeat_copy_element_values\":\"0\",
+\"group_columns\":\"1\",
+\"group_column_widths\":\"\",
+\"repeat_group_show_first\":\"1\",
+\"random\":\"0\",
+\"labels_above\":\"-1\",
+\"labels_above_details\":\"-1\"
+}'
 """ + ");"
 #print(s_sql)
 s_sql = s_sql.replace("%LABEL%",s_label)
