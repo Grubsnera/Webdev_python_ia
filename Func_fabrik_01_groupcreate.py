@@ -150,17 +150,31 @@ def Fabrik_groupcreate(s_input="F",s_lb="New GROUP to setup",s_db="Web_ia_joomla
     s_sql = s_sql.replace("%CREATED_BY%",s_created_by)
     curs.execute(s_sql)
     cnxn.commit()
-    funcfile.writelog("%t INSERT RECORD: " + s_dbi +"."+ s_tbi +":"+ s_lbi)
+    funcfile.writelog("%t INSERT RECORD: "+s_dbi+"."+s_tbi+": "+s_lbi)
 
     # GROUP DEFAULT PARAMETERS
     """
+    (
+    92,
+    'TEST List',
+    '',
+    'TEST List',
+    1,
+    '2019-03-20 05:14:04',
+    842,
+    'Albertjvr',
+    '0000-00-00 00:00:00',
+    0,
+    0,
+    '0000-00-00 00:00:00',
+    0,
+    0,
     '{
     \"split_page\":\"0\",
     \"list_view_and_query\":\"1\",
-    \"access\":\"1\",
-    \"intro\":\"\",
+    \"access\":\"1\",\"intro\":\"\",
     \"outro\":\"\",
-    \"repeat_group_button\":\"0\",
+    \"repeat_group_button\":0,
     \"repeat_template\":\"repeatgroup\",
     \"repeat_max\":\"\",
     \"repeat_min\":\"\",
@@ -174,22 +188,20 @@ def Fabrik_groupcreate(s_input="F",s_lb="New GROUP to setup",s_db="Web_ia_joomla
     \"repeat_copy_element_values\":\"0\",
     \"group_columns\":\"1\",
     \"group_column_widths\":\"\",
-    \"repeat_group_show_first\":\"1\",
+    \"repeat_group_show_first\":1,
     \"random\":\"0\",
     \"labels_above\":\"-1\",
     \"labels_above_details\":\"-1\"
     }'
+    );
     """
 
     # GET NEWLY CREATED GROUP NUMBER
     curs.execute("SELECT "+s_tbi+".id, "+s_tbi+".name FROM "+s_tbi+" WHERE "+s_tbi+".name = '" + s_lbi +"'")
     for row in curs.fetchall():
         print("Created group "+str(row[0]))
+        funcfile.writelog("%t GROUP CREATED: "+str(row[0]))
         i_return = row[0]
-
-    # Script log file
-    #funcfile.writelog("---------------------------------")
-    #funcfile.writelog("COMPLETED: FABRIK_INSERT_01_GROUP")
 
     # RETURN NEWLY CREATED GROUP NUMBER
     return i_return
