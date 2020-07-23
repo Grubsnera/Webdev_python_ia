@@ -1,0 +1,18 @@
+----------------
+2019-09-13 20:07
+SCRIPT: FUNC_FABRIK_01_GROUPCREATE_RUN
+--------------------------------------
+20:07:54 ERROR: NameError
+20:07:54 ERROR: name 'i_gr' is not defined
+----------------
+2019-09-13 20:07
+COMPLETED: FUNC_FABRIK_01_GROUPCREATE_RUN
+-----------------------------------------
+----------------
+2019-09-13 20:14
+SCRIPT: FUNC_FABRIK_01_GROUPCREATE_RUN
+--------------------------------------
+----------------
+2019-09-13 20:14
+COMPLETED: FUNC_FABRIK_01_GROUPCREATE_RUN
+-----------------------------------------

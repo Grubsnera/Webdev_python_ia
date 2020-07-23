@@ -112,3 +112,13 @@ dmypy.json
 
 # Pyre type checker
 .pyre/
+
+# Albert
+/*.csv
+funcmysql.py
+.idea/
+_external_data/
+History/
+MySql_sql_history/
+Logs/
+Testing/

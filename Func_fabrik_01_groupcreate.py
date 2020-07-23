@@ -3,14 +3,16 @@ Script to CREATE Joomla Fabrik group record
 Copyright (C) AB Janse van Rensburg 20190308
 *****************************************************************************"""
 
-def Fabrik_groupcreate(s_input="F",s_lb="New GROUP to setup",s_db="Web_ia_joomla",s_tb="ianwu_fabrik_groups"):
 
-    """ PARAMETERS *************************************************************
-    s_input = F=do not ask parameters(default) T=ask parameters
-    s_lb = Group label
-    s_db = Joomla database
-    s_tb = Joomla table name
-    *************************************************************************"""
+def fabrik_groupcreate(b_input=False, s_db="Web_ia_joomla", s_tb="ianwu_fabrik_groups", s_lb="New GROUP to setup"):
+    """
+    Create Joomla Fabrik group record
+    :param b_input: Input database parameters if True (Default=False)
+    :param s_db: Mysql database (Default=Web_ia_joomla)
+    :param s_tb: Mysql table (Default=ianwu_fabrik_groups)
+    :param s_lb: Fabrik group label (Default=New GROUP to setup)
+    :return:
+    """
 
     """ INDEX ******************************************************************
     ENVIRONMENT
@@ -46,7 +48,7 @@ def Fabrik_groupcreate(s_input="F",s_lb="New GROUP to setup",s_db="Web_ia_joomla
 
     # Input the joomla mysql fabrik DATABASE name
     s_dbi = s_db
-    if s_input == "T":
+    if b_input:
         print("")
         print("Default:"+s_db)
         s_dbi = input("Fabrik DATABASE name? ")
@@ -55,7 +57,7 @@ def Fabrik_groupcreate(s_input="F",s_lb="New GROUP to setup",s_db="Web_ia_joomla
 
     # Input the joomla mysql fabrik TABLE name
     s_tbi = s_tb
-    if s_input == "T":
+    if b_input:
         print("")
         print("Default:"+s_tb)
         s_tbi = input("Fabrik TABLE name? ")
@@ -64,7 +66,7 @@ def Fabrik_groupcreate(s_input="F",s_lb="New GROUP to setup",s_db="Web_ia_joomla
 
     # Input the joomla mysql fabrik GROUP label
     s_lbi = s_lb
-    if s_input == "T":
+    if b_input:
         print("")
         print("Default:"+s_lb)
         s_lbi = input("Fabrik GROUP label? ")

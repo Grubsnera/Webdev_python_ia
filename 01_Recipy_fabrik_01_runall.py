@@ -21,7 +21,7 @@ funcfile.writelog("-----------------------")
 # CALL THE GROUP CREATE FUNCTION
 import Func_fabrik_01_groupcreate
 try:
-    i_gr = Func_fabrik_01_groupcreate.Fabrik_groupcreate()
+    i_gr = Func_fabrik_01_groupcreate.fabrik_groupcreate()
     print("Group: "+str(i_gr))
 except Exception as e:
     funcsys.ErrMessage(e)
