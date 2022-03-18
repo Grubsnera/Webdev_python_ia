@@ -73,10 +73,10 @@ def assi_conducted(s_database: str = "", s_drop_table: str = "", s_add_data: str
 
     # Create ASSIGNMENT_CONDUCTED table *******************************************
     if s_drop_table == "y":
-        curs.execute("DROP TABLE IF EXISTS ia_assignment_conducted_test")
+        curs.execute("DROP TABLE IF EXISTS ia_assignment_conducted")
         funcfile.writelog("%t DROPPED TABLE: ASSIGNMENT_CONDUCTED(ia_assignment_conducted)")
     s_sql: str = """
-    CREATE TABLE IF NOT EXISTS ia_assignment_conducted_test (
+    CREATE TABLE IF NOT EXISTS ia_assignment_conducted (
     ia_assicond_auto INT(11) NOT NULL AUTO_INCREMENT,
     ia_assicond_name VARCHAR(50) NOT NULL,
     ia_assicond_desc TEXT NOT NULL,
@@ -94,7 +94,7 @@ def assi_conducted(s_database: str = "", s_drop_table: str = "", s_add_data: str
     ENGINE = InnoDB
     CHARSET=utf8mb4
     COLLATE utf8mb4_unicode_ci
-    COMMENT = 'Table to store assignment conducted'
+    COMMENT = 'Table to store assignment conducted by lists.'
     """ + ";"
     curs.execute(s_sql)
     funcfile.writelog("%t CREATED TABLE: ASSIGNMENT_CONDUCTED(ia_assignment_conducted)")
@@ -102,7 +102,7 @@ def assi_conducted(s_database: str = "", s_drop_table: str = "", s_add_data: str
     # Insert ASSIGNMENT_CONDUCTED data
     if s_add_data == "y":
         s_sql = """
-        INSERT INTO `ia_assignment_conducted_test`
+        INSERT INTO `ia_assignment_conducted`
         (`ia_assicond_name`,
         `ia_assicond_desc`,
         `ia_assicond_active`,
