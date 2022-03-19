@@ -75,10 +75,10 @@ def find_adequacy(s_database: str = "", s_drop_table: str = "", s_add_data: str 
 
     # Create FINDING_ADEQUACY table *******************************************
     if s_drop_table == "y":
-        curs.execute("DROP TABLE IF EXISTS ia_finding_adequacy_test")
+        curs.execute("DROP TABLE IF EXISTS ia_finding_adequacy")
         funcfile.writelog("%t DROPPED TABLE: FINDING_ADEQUACY(ia_finding_adequacy)")
     s_sql: str = """
-    CREATE TABLE IF NOT EXISTS ia_finding_adequacy_test (
+    CREATE TABLE IF NOT EXISTS ia_finding_adequacy (
     ia_findadeq_auto INT(11) NOT NULL AUTO_INCREMENT,
     ia_findadeq_name VARCHAR(50) NOT NULL,
     ia_findadeq_desc TEXT NOT NULL,
@@ -104,7 +104,7 @@ def find_adequacy(s_database: str = "", s_drop_table: str = "", s_add_data: str 
     # Insert FINDING_ADEQUACY data
     if s_add_data == "y":
         s_sql = """
-        INSERT INTO `ia_finding_adequacy_test`
+        INSERT INTO `ia_finding_adequacy`
         (`ia_findadeq_name`,
         `ia_findadeq_desc`,
         `ia_findadeq_active`,

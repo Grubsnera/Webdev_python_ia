@@ -27,7 +27,7 @@ sd_database = "Web_ia_nwu"
 sd_drop_table = "n"
 sd_add_data = "n"
 run_mysql_create_assi_conducted: bool = False
-run_mysql_create_find_adequacy: bool = True
+run_mysql_create_find_adequacy: bool = False
 s_sql = ""  # SQL statements
 
 if l_debug:
