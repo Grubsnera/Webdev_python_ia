@@ -24,16 +24,11 @@ print("ENVIRONMENT")
 
 # IMPORT SYSTEM OBJECTS
 import sys
-
-# DECLARE OWN MODULE PATH
-sys.path.append('S:/_my_modules')
-
-# IMPORT PYTHON OBJECTS
 import pyodbc
 
 # IMPORT FUNCTION FILES
-import funcfile
-import funcmysql
+from _my_modules import funcfile
+from _my_modules import funcmysql
 
 # DECLARE VARIABLES
 sd_database = "Web_ia_joomla"
@@ -74,7 +69,7 @@ funcfile.writelog("%t OPEN DATABASE: " + s_database)
 CREATE GROUP STEP 1 (create fabrik group and obtain group number)
 *****************************************************************************"""
 print("CREATE GROUP")
-funcfile.writelog("CREATE GROUP)
+funcfile.writelog("CREATE GROUP")
 
 # SET THE JOOMLA MYSQL FABRIK TABLE NAME
 s_table = ""
@@ -482,7 +477,7 @@ params
 """ + ") VALUES (" + """
 "%NAME%",
 %GROUP%,
-"date",
+"jdate",
 "%LABEL%",
 NOW(),
 %CREATED_BY%,
@@ -492,14 +487,28 @@ NOW(),
 0,
 1,
 1,
-1,
+10,
 '{
-"custom_link_indetails":"0",
-"include_in_list_query":"0",
-"date_store_as_local":"1",
-"date_form_format":"Y-m-d H:i:s",
-"date_defaulttotoday":"1",
-"inc_in_adv_search":"0"
+"bootstrap_class":"input-medium",
+"jdate_showtime":"0",
+"jdate_time_format":"H:i:s",
+"jdate_time_24":"1",
+"jdate_store_as_local":"1",
+"jdate_table_format":"Y-m-d",
+"jdate_form_format":"Y-m-d H:i:s",
+"jdate_defaulttotoday":"1",
+"jdate_alwaystoday":"0",
+"jdate_allow_typing_in_field":"0",
+"jdate_show_week_numbers":"0",
+"jdate_csv_offset_tz":"0",
+"rollover":"The date on which the element was created.",
+"tiplocation":"right",
+"edit_access":"10",
+"view_access":"9",
+"list_view_access":"1",
+"store_in_db":"1",
+"default_on_copy":"1",
+"can_order":"1"
 }'
 """ + ");"
 s_sql = s_sql.replace("%NAME%",s_name)
@@ -589,7 +598,7 @@ cnxn.commit()
 funcfile.writelog("%t INSERT LIST: " + s_database +"."+ s_table +":"+ s_label)
 
 
-""" INSERT ELEMENT CREATEDATE STEP 8 (create fabrik element editdate)
+""" INSERT ELEMENT EDITDATE STEP 8 (create fabrik element editdate)
 *****************************************************************************"""
 
 # Input the joomla mysql fabrik TABLE name
@@ -602,13 +611,13 @@ s_group = str(sd_group)
 print("")
 s_name = ""
 while s_name == "":
-    s_name = input("Fabrik element createdate FIELD name? ")
+    s_name = input("Fabrik element editdate FIELD name? ")
 
 # Input the joomla mysql fabrik element LABEL name
 print("")
 s_label = ""
 while s_label == "":
-    s_label = input("Fabrik element createdate LABEL name? ")
+    s_label = input("Fabrik element editdate LABEL name? ")
 
 # Input the joomla mysql fabrik element ORDER number
 s_auto = str(n_coun)
@@ -633,7 +642,7 @@ params
 """ + ") VALUES (" + """
 "%NAME%",
 %GROUP%,
-"date",
+"jdate",
 "%LABEL%",
 NOW(),
 %CREATED_BY%,
@@ -643,15 +652,28 @@ NOW(),
 0,
 1,
 1,
-1,
+10,
 '{
-"custom_link_indetails":"0",
-"include_in_list_query":"0",
-"date_store_as_local":"1",
-"date_form_format":"Y-m-d H:i:s",
-"date_defaulttotoday":"0",
-"date_alwaystoday":"1",
-"inc_in_adv_search":"0"
+"bootstrap_class":"input-medium",
+"jdate_showtime":"0",
+"jdate_time_format":"H:i:s",
+"jdate_time_24":"1",
+"jdate_store_as_local":"1",
+"jdate_table_format":"Y-m-d",
+"jdate_form_format":"Y-m-d H:i:s",
+"jdate_defaulttotoday":"1",
+"jdate_alwaystoday":"0",
+"jdate_allow_typing_in_field":"0",
+"jdate_show_week_numbers":"0",
+"jdate_csv_offset_tz":"0",
+"rollover":"The date on which the element was created.",
+"tiplocation":"right",
+"edit_access":"10",
+"view_access":"9",
+"list_view_access":"1",
+"store_in_db":"1",
+"default_on_copy":"1",
+"can_order":"1"
 }'
 """ + ");"
 s_sql = s_sql.replace("%NAME%",s_name)

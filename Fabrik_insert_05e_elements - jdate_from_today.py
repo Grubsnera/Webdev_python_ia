@@ -17,8 +17,8 @@ sd_table = "ianwu_fabrik_elements"
 s_sql = "" #SQL statements
 s_created_by = "854"
 
-print("FABRIK INSERT ELEMENT RADIOBUTTON STEP 5")
-print("----------------------------------------")
+print("FABRIK INSERT ELEMENT FIELD DATE_TODAY STEP 5")
+print("---------------------------------------------")
 
 # Input the joomla mysql fabrik DATABASE name
 print("")
@@ -60,8 +60,8 @@ while s_auto == "":
    
 # Script log file
 funcfile.writelog("Now")
-funcfile.writelog("SCRIPT: FABRIK_INSERT_05_ELEMENT_RADIOBUTTON")
-funcfile.writelog("--------------------------------------------")
+funcfile.writelog("SCRIPT: FABRIK_INSERT_05_ELEMENT_DATE_TODAY")
+funcfile.writelog("-------------------------------------------")
 
 # Connect to the oracle database
 cnxn = funcmysql.mysql_open(s_database)
@@ -87,7 +87,7 @@ params
 """ + ") VALUES (" + """
 "%NAME%",
 %GROUP%,
-"radiobutton",
+"jdate",
 "%LABEL%",
 NOW(),
 %CREATED_BY%,
@@ -99,12 +99,27 @@ NOW(),
 1,
 1,
 '{
-"sub_options":{"sub_values":["0","1"],
-"sub_labels":["No","Yes"],
-"sub_initial_selection":["1"]},
-"options_per_row":"2",
-"btnGroup":"1",
-"inc_in_adv_search":"0"
+"bootstrap_class":"input-small",
+"jdate_showtime":"0",
+"jdate_time_format":"H:i:s",
+"jdate_time_24":"1",
+"jdate_store_as_local":"1",
+"jdate_table_format":"Y-m-d",
+"jdate_form_format":"Y-m-d",
+"jdate_defaulttotoday":"1",
+"jdate_alwaystoday":"0",
+"jdate_allow_typing_in_field":"1",
+"jdate_show_week_numbers":"0",
+"jdate_csv_offset_tz":"0",
+"rollover":"From which date is this element valid.",
+"tiplocation":"right",
+"edit_access":"1",
+"view_access":"1",
+"list_view_access":"1",
+"store_in_db":"1",
+"default_on_copy":"1",
+"can_order":"1",
+"validations":{"plugin":["notempty"],"plugin_published":["1"],"validate_in":["both"],"validation_on":["both"],"validate_hidden":["1"],"must_validate":["0"],"show_icon":["0"]}
 }'
 """ + ");"
 s_sql = s_sql.replace("%NAME%",s_name)
@@ -119,15 +134,23 @@ funcfile.writelog("%t ADD DATA: " + s_database +"."+ s_table +":"+ s_label)
 # Element field text default params
 """
 {
-"sub_options":{"sub_values":["0","1"],
-"sub_labels":["No","Yes"],
-"sub_initial_selection":["1"]},
-"options_per_row":"4",
-"btnGroup":"1",
-"allow_frontend_addtoradio":"0",
-"rad-allowadd-onlylabel":"0",
-"rad-savenewadditions":"0",
-"dropdown_populate":"",
+"bootstrap_class":"input-small",
+"date_showtime":"0",
+"date_time_format":"H:i",
+"bootstrap_time_class":"input-medium",
+"placeholder":"",
+"date_store_as_local":"1",
+"date_table_format":"Y-m-d",
+"date_form_format":"Y-m-d H:i:s",
+"date_defaulttotoday":"1",
+"date_alwaystoday":"0",
+"date_firstday":"0",
+"date_allow_typing_in_field":"1",
+"date_csv_offset_tz":"0",
+"date_advanced":"0",
+"date_allow_func":"",
+"date_allow_php_func":"",
+"date_observe":"",
 "show_in_rss_feed":"0",
 "show_label_in_rss_feed":"0",
 "use_as_rss_enclosure":"0",
@@ -145,7 +168,7 @@ funcfile.writelog("%t ADD DATA: " + s_database +"."+ s_table +":"+ s_label)
 "encrypt":"0",
 "store_in_db":"1",
 "default_on_copy":"0",
-"can_order":"0",
+"can_order":"1",
 "alt_list_heading":"",
 "custom_link":"",
 "custom_link_target":"",
@@ -194,10 +217,15 @@ funcfile.writelog("%t ADD DATA: " + s_database +"."+ s_table +":"+ s_label)
 "custom_calc_access":"1",
 "custom_calc_split":"",
 "custom_calc_php":"",
-"validations":[]
+"notempty-message":[""],
+"notempty-validation_condition":[""],
+"tip_text":[""],
+"icon":[""],
+"validations":{"plugin":["notempty"],"plugin_published":["1"],"validate_in":["both"],"validation_on":["both"],"validate_hidden":["1"],"must_validate":["0"],"show_icon":["0"]}
 }
 """
 
+
 # Script log file
 funcfile.writelog("----------------------------------------------")
-funcfile.writelog("COMPLETED: FABRIK_INSERT_05_ELEMENT_RADIOBUTTON")
+funcfile.writelog("COMPLETED: FABRIK_INSERT_05_ELEMENT_DATE_TODAY")

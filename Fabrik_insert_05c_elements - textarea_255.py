@@ -5,16 +5,11 @@ Copyright: AB Janse van Rensburg on 2018-10-28
 
 # Import python system objects
 import sys
-
-# Add own module path
-sys.path.append('S:/_my_modules')
-
-# Import python objects
 import pyodbc
 
 # Define Functions
-import funcfile
-import funcmysql
+from _my_modules import funcfile
+from _my_modules import funcmysql
 
 # Declare variables
 sd_database = "Web_ia_joomla"
